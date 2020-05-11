@@ -1,39 +1,62 @@
 <template>
-  <div id="app">
-    <div class="weather-card" v-for="card in allWeather" :key="card.lat">
-      <h1>{{ card.city_name }}</h1>
-      <h2>{{ card.app_temp }} °</h2>
-      <img :src="setIcons(card.weather.icon)" />
-    </div>
+  <div id="app" class="page">
+    <h1 class="page__title">Weather</h1>
+    <SearchForm class="page__search-form"></SearchForm>
+    <WeatherCard></WeatherCard>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+
+import WeatherCard from './components/WeatherCard';
+import SearchForm from './components/SearchForm';
 export default {
   name: "App",
-  // data() {
-  //   return {
-  //     weather: [],
-  //     title: '',
-  //     temp: '',
-  //     iconsCode: '',
-  //   }
-  // },
-  methods: {
-    ...mapActions(["getDataWeather"]),
-    setIcons(code) {
-      return `https://www.weatherbit.io/static/img/icons/${code}.png`
-    }
-  },
-  computed: mapGetters(['allWeather', 'allIcons']),
-  async mounted() {
-    this.getDataWeather('Omsk');
+  components: {
+    WeatherCard, SearchForm
   }
-  
 };
 </script>
 
 <style lang="scss">
-
+  @font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('~@/assets/fonts/playfair/PlayfairDisplay-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('~@/assets/fonts/playfair/PlayfairDisplay-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  body {
+    font-family: 'PlayfairDisplay';
+  }
+  h1,h2,h3,body,p,ul,li {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    list-style: none;
+  }
+  .page {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+  }
+  .page__title {
+    color: #FF7F00;
+    font-size: 48px;
+    line-height: 1.2;
+    margin-bottom: 25px;
+  }
+  .page__search-form {
+    margin-bottom: 15px;
+  }
 </style>
