@@ -15,7 +15,7 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
   methods: {
-    ...mapActions(["getDataWeather"]),
+    ...mapActions(['getDataWeather', 'getGeolocation']),
     setIcons(code) {
       return `https://www.weatherbit.io/static/img/icons/${code}.png`
     },
@@ -30,11 +30,11 @@ export default {
       return month[date.getMonth()];
     }
   },
-  computed: mapGetters(['allWeather', 'allIcons']),
-  async mounted() {
+  computed: mapGetters(['allWeather']),
+  mounted() {
+    this.getGeolocation();
     this.getDataWeather();
   }
-  
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <form class="search-form" @submit.prevent="getDataWeather(inpValue)">
+  <form class="search-form" @submit.prevent="getDataWeatherSearch(inpValue)">
     <input class="search-form__input" placeholder="Name the city" type="text" v-model="inpValue">
     <button class="search-form__btn">Search</button>
   </form>
@@ -14,7 +14,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["getDataWeather"])
+    ...mapActions(["getDataWeatherSearch"])
   },
 }
 </script>

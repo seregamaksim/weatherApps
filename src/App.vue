@@ -1,6 +1,7 @@
 <template>
   <div id="app" class="page">
     <h1 class="page__title">Weather</h1>
+    <p class="page__note">Для определения погоды в вашем городе, разрешите браузеру получить ваши геоданные или воспользуйтесь поиском</p>
     <SearchForm class="page__search-form"></SearchForm>
     <WeatherCard></WeatherCard>
   </div>
@@ -55,6 +56,14 @@ export default {
     font-size: 48px;
     line-height: 1.2;
     margin-bottom: 25px;
+  }
+  .page__note {
+    font-size: 22px;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    color: #000;
+    max-width: 80%;
+    text-align: center;
   }
   .page__search-form {
     margin-bottom: 15px;
