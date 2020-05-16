@@ -32,7 +32,6 @@ export default {
   },
   computed: mapGetters(['allWeather']),
   mounted() {
-    this.getGeolocation();
     this.getDataWeather();
   }
 };
